@@ -5,6 +5,8 @@
 
 import json
 import re
+# pip install unidecode
+from unidecode import unidecode
 
 tids = json.load(open('tiddlers.json', 'r'))
 
@@ -37,6 +39,7 @@ for t in tids:
         ta = ''
     o = 'tiddly/%s.md'%(ti.replace('/', '-'))
     o = o.replace(' ', '-')
+    o = unidecode(o)
     with open(o, 'w') as w:
         w.write(co)
         w.write('\n\n')
